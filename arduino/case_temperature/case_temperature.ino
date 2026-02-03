@@ -16,10 +16,9 @@ void loop() {
   float tempC_1 = sensors.getTempCByIndex(0);
   float tempC_2 = sensors.getTempCByIndex(1);
 
-  Serial.print("MAGIC_CT_SENSOR1,");
-  Serial.println(tempC_1);
-
-  Serial.print("MAGIC_CT_SENSOR2,");
+  Serial.print("CT_SENSOR,");
+  Serial.print(tempC_1);
+  Serial.print(",");
   Serial.println(tempC_2);
 
   delay(1000);

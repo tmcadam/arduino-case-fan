@@ -73,6 +73,37 @@ Test with:
 `systemctl suspend`
 
 
+### Make a linux service
+
+
+`vim ~/.config/systemd/user/casetemps.service`
+
+
+```
+[Unit]
+Description=Case Temperature Monitoring User Service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/<USERNAME>/.sensors/main-linux.py
+Restart=always
+
+[Install]
+WantedBy=default.target
+```
+
+```
+systemctl --user daemon-reload
+systemctl --user enable --now casetemps
+```
+
+Check logs with:
+
+- Follow logs live: `journalctl --user -u casetemps -f`
+- Show debug-level (and above): `journalctl --user -u casetemps -p debug`
+- Follow debug-level (and above) live: `journalctl --user -u casetemps -p debug -f`
+- Show logs from current boot only: `journalctl --user -u casetemps -b`
+
+
 ### ToDo
 
   - check if this blocks PC sleeping

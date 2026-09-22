@@ -77,7 +77,7 @@ def read_sensor(port):
                         # Convert temperatures to millidegrees (integer format)
                         temp_front = int(float(parts[1]) * 1000)
                         temp_rear = int(float(parts[2]) * 1000)
-                        temp_diff = temp_rear - temp_front
+                        temp_diff = abs(temp_rear - temp_front)
                         logger.debug(f"Front Case: {temp_front}")
                         logger.debug(f"Rear Case: {temp_rear}")
                         logger.debug(f"Temp Difference: {temp_diff}")
